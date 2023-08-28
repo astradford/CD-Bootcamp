@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Upcycled Eats - Home</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="../static/img/carrot.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+        }
+
+        td img{
+            width: 45px;
+            height: 45px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark" style="padding-left:1%; padding-right: 1%;">
+        <a class="navbar-brand" href="#">
+            <img src="../static/img/carrot.png" width="35" height="40" class="d-inline-block align-top" alt="UpCycledEats";>
+            <b style="font-size:xx-large;">UpcycledEats</b>
+        </a>
+        <form action="/login">
+            <input type="submit" value="Log In" style="background-color: #009e0f; color:white;" class="btn btn-outline-success my-2 my-sm-0"/>
+        </form>
+
+    </nav>
+    <main style="padding-top: 1%; background-color: #e9e9e9;">            
+        <div class="row">
+            <div id="group" style="width:40%; margin:auto; height: 100%; vertical-align: top;">
+                <div id="main-section" style="justify-content:flex-start; align-items:center;">
+                    <div>
+                        <div class="mb-3" style="width:100%; margin-top: 3%;"><br/>
+                            <h1 style="color: #009e0f; line-height: 185%;">Diverting just 15% of currently wasted food would reduce the number of food insecure Americans by 50%.*</h1>
+                        </div>
+                        <h8 style="color: #009e0f; font-style: italic; line-height: 145%">*Source: USDA, https://www.ers.usda.gov/topics/food-nutrition-assistance/food-security-in-the-u-s/</h8>
+                        <br/><br/><br/>
+                        <div class="mb-3" style="width:100%">
+                            <h5 style="color: #333333; line-height: 195%;">Upcycled Eats partners with grocery stores and restaurants to offer an easy alternative to dumping produce that also serves the community. Instead of discarding unused produce, Upcycled Eats releases liability of all products, and will facilitate pickup, sorting/filtering, and delivering with vetted organizations and agencies that help those in need.</h5>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="icon-set">
+                        <table style="background-color: transparent; outline-color: transparent; width: 100%; margin-bottom: 7%;">
+                            <tr>
+                                <td class="px-2"><img src="../static/img/shopping-basket.png" title="basket icon"></td>
+                                <td><h5>43 BILLION pounds of food is wasted annually by grocery stores (<a href="https://www.nrdc.org/sites/default/files/wasted-food-IP.pdf">NRDC</a>)</h5></td>    
+                            </tr>
+                            <tr>
+                                <td class="px-2"><img src="../static/img/legal-scale.png" title="legal scale icon"></td>
+                                <td><h5>Increasing state legislation requiring grocers to donate and limit dumping.</h5></td>    
+                            </tr>
+                            <tr>
+                                <td class="px-2"><img src="../static/img/co2.png" title="carbon icon"></td>
+                                <td><h5>Upcycling equals less food in the landfills, reducing our carbon footprint.</h5></td>    
+                            </tr>
+                        </table>
+                    </div>  
+                </div>  
+            </div><br/>
+            <div id="register" style="width:30%; margin:auto; outline: solid #d3d3d3 1pt; border-radius: 1%;  background-color: #ffffff; text-align: center;">
+                <h2 class="text-primary" style="margin: 5% 0% 1% 0%;">Sign Up</h2>
+                <a style="color:#009e0f; font-weight: bold;" href="/login">or Log In</a>
+                <br/>
+                <hr style="width: 70%; margin:auto; margin-top: 5%;">
+                <br/>
+                {% with messages = get_flashed_messages(category_filter = ["register"]) %}
+                    {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for message in messages %}
+                                {{message}}<br> 
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <div id="register-inputs" style="align-items: center;">
+                    <form action="/register" method="POST" style="margin: 5%;">
+                        <div class="col-auto my-1">
+                            <label for="custom-select mr-sm-2" class="form-label"></label>
+                            <select class="custom-select mr-sm-2" id="account_type" name="account_type">
+                                    <option selected>Select Account Type</option>
+                                <optgroup label="Giver">
+                                    <option value="grocery_store">Grocery Store</option>
+                                    <option value="restaurant">Restaurant</option>
+                                    <option value="food_retailer">Food Retailer</option>
+                                </optgroup>
+                                <optgroup label="Partner"> <!-- disabled the Partner list because building both sides of the platform proved to be too large of a feat -->
+                                    <option value="food_pantry" disabled>Food Pantry</option>
+                                    <option value="shelter" disabled>Shelter</option>
+                                    <option value="farm" disabled>Farm</option>
+                                    <option value="compost_company" disabled>Compost Company</option>
+                                </optgroup>
+                            </select><br/>
+                            <!-- <label for="company_name" class="form-label"></label>
+                                <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Company/Organization Name">  -->
+                            <label for="fname" class="form-label"></label>
+                                    <input type="text" id="gfname" name="gfname" class="form-control" placeholder="Your first name">
+                            <label for="lname" class="form-label"></label>
+                                    <input type="text" id="glname" name="glname" class="form-control" placeholder="Your last name">
+                            <label for="email" class="form-label"></label>
+                                <input type="text" id="gemail" name="gemail" class="form-control" placeholder="Your email address">
+                            <label for="password" class="form-label"></label>
+                                <input type="text" id="gpass" name="gpass" class="form-control" placeholder="Your password">
+                                <br/>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" id="flexSwitchCheckDefault" name="gauth" class="form-check-input" value="on">
+                                <label for="flexSwitchCheckDefault" class="form-check-label" style="margin-left: -12%;">I am authorized to represent on behalf of my company.</label></div>
+                            </div>
+                            <br/><br/>
+                            <button class="btn btn-primary" type="submit">Sign Up for Upcycled Eats</button>
+                            <br/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+            <br/><br/><br/>
+        </div>
+    </main>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+</body>
+</html>
